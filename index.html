@@ -1,0 +1,49 @@
+<html>
+    <head><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+       <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <div class="no-interaction">  <!-- This is display none as default and is absolute positioned -->
+            <div id="checkout-cont">
+                <div class="cancel-cont">
+                    <button class="cancel" id="close-btn">x</button>
+                </div>
+                <h5>Enter card details</h5>
+                <form id="user-form">
+                    <input type="text" name="user-name" placeholder="Enter your name" required>
+                    <input type="text" name="card-number" placeholder="Enter card number" required>
+                    <input type="password" name="cvv-number" placeholder="Enter CVV" required>
+                    <button class="order-btn" id="pay-btn">Pay</button>
+                </form>
+            </div>
+        </div>
+        <div id="gen-container">
+            <header>
+                <h1>
+                    Paul's Diner
+                </h1>
+                <p>The best burgers and pizzas in town.</p>
+            </header>
+            <div id="menu-cont">
+                <!-- DYNAMICALLY CREATED currently in display none -->
+            </div>
+            <div id="recap-cont">
+                <h3>Your order</h3>
+                <div id="cart-cont">
+                    <!-- move to js -->
+                    <div id="add-elem-cont">
+
+                    </div>
+                    <hr>
+                    <div class="cart-elem total">   
+                        <h4>TOTAL PRICE:</h4>         
+                        <span class="price" id="total">€ PRICE</span>
+                    </div>
+                    <button class="order-btn" id="order">Complete order</button>
+                </div>
+            </div>
+        </div>
+	<script src="index.js" type="module"></script>
+    </body>
+</html>
+
