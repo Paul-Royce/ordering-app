@@ -1,4 +1,4 @@
-import { menuArray } from "./data"
+import { menuArray } from "./data.js"
 
 const menuContainer = document.getElementById("menu-cont")
 const recapContainer = document.getElementById("recap-cont")
@@ -97,7 +97,7 @@ form.addEventListener("submit", (e)=> {
     const userName = new FormData(form).get("user-name")
     noInteractionContainer.style.display = "none"
     recapContainer.innerHTML = `<div class="thank-cont">
-        <p id="order-complete-msg">Thanks ${userName}, your order is one his way</p>
+        <p id="order-complete-msg">Thanks ${userName}, your order is on his way</p>
         <span role="button" id="repurchase">Purchase Again!</span>
     </div>`
 })

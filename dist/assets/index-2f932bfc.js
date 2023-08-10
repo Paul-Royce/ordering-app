@@ -22,6 +22,6 @@
                 <span class="price">€ ${i.price}</span>
             </div>
             `});let c=0;for(let i=0;i<o.length;i++)c+=o[i].price,e.textContent="€"+c}}const d=document.querySelector(".no-interaction"),h=document.getElementById("checkout-cont");h.addEventListener("click",t=>{t.target.id==="close-btn"&&(d.style.display="none")});const y=document.getElementById("order");y.addEventListener("click",()=>d.style.display="block");const u=document.getElementById("user-form");u.addEventListener("submit",t=>{t.preventDefault();const e=new FormData(u).get("user-name");d.style.display="none",l.innerHTML=`<div class="thank-cont">
-        <p id="order-complete-msg">Thanks ${e}, your order is one his way</p>
+        <p id="order-complete-msg">Thanks ${e}, your order is on his way</p>
         <span role="button" id="repurchase">Purchase Again!</span>
     </div>`});
