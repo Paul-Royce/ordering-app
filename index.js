@@ -2,6 +2,7 @@ import { menuArray } from "./data.js"
 
 const menuContainer = document.getElementById("menu-cont")
 const recapContainer = document.getElementById("recap-cont")
+const AddElemContainer = document.getElementById("add-elem-cont")
 
 
 function rendermenuArray() {
@@ -41,7 +42,8 @@ document.addEventListener("click", e => {
     }
 })
 
-const cartArray = []
+const totalPrice = document.getElementById("total")
+let cartArray = []
 
 function addToCart(mealID) {
     const filteredMeal = menuArray.filter(meal => meal.uuid === mealID)[0]
@@ -52,8 +54,6 @@ function addToCart(mealID) {
 }
 
 function renderChanges() {
-    const AddElemContainer = document.getElementById("add-elem-cont")
-    const totalPrice = document.getElementById("total")
     if(cartArray.length > 0) {
         AddElemContainer.innerHTML = ""
         recapContainer.style.display = "block"
@@ -63,7 +63,7 @@ function renderChanges() {
             <div class="cart-elem">
                 <div class="cart-left">
                     <h4>${item.name}</h4>
-                    <span class="cart-remove">remove</span>
+                    <span class="cart-remove" data-id = ${item.uuid}>remove</span>
                 </div>
                 <span class="price">€ ${item.price}</span>
             </div>
@@ -72,9 +72,11 @@ function renderChanges() {
         let count = 0
         for(let i=0; i < cartArray.length; i++) {
             count+= cartArray[i].price
-            totalPrice.textContent = "€" + count
+            totalPrice.textContent = "€" + count || 1
         }
         
+    } else {
+        recapContainer.innerHTML = "No elements found"
     }
 }
 
@@ -102,3 +104,17 @@ form.addEventListener("submit", (e)=> {
     </div>`
 })
 
+AddElemContainer.addEventListener("click", (e)=> {
+    /* look for an element that has the data- of uuid */
+    cartArray.forEach(elem => {  /* loodp throught the cartArray array of objects */
+        if(e.target.dataset.id === elem.uuid) {  /* if you the uuid of one of the objects matches the dataset id of the clicked element */
+            removeItem(elem)  /* run this function, and pass it the entire object */
+        }
+    })
+})
+
+function removeItem(item) {
+    const index = cartArray.indexOf(item) /* in cartArray find the index of the passed object from the eventListener */
+    cartArray.splice(index, 1)    /* cart array delete the object that has the same index of the index variable above*/
+    renderChanges()
+}
