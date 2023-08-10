@@ -77,6 +77,9 @@ function renderChanges() {
         
     } else {
         recapContainer.innerHTML = "No elements found"
+        setTimeout(()=>{
+            location.reload()
+        }, 1250)
     }
 }
 
