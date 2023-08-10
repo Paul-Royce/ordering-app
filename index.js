@@ -7,7 +7,6 @@ const recapContainer = document.getElementById("recap-cont")
 function rendermenuArray() {
     let menuElements = ``
     menuArray.forEach(meal => {
-        console.log(meal.image);
         menuElements += `
         <div>
         <div class="meal-cont" data-id = ${meal.uuid}>
